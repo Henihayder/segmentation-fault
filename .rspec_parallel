@@ -1,0 +1,4 @@
+--format progress
+--format ParallelTests::RSpec::RuntimeLogger --out tmp/rspec/parallel_runtime_rspec.log
+--profile 10
+--require rails_helper

@@ -1,0 +1,37 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:00"
+    timezone: America/Sao_Paulo
+  open-pull-requests-limit: 10
+  labels:
+  - dependencies
+  - javascript
+  - automerge
+
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:00"
+    timezone: America/Sao_Paulo
+  open-pull-requests-limit: 10
+  labels:
+  - dependencies
+  - ruby
+  - automerge
+
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "08:00"
+    timezone: America/Sao_Paulo
+  open-pull-requests-limit: 10
+  labels:
+  - dependencies
+  - github-actions
+  - automerge
