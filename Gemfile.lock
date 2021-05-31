@@ -62,6 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ast (2.4.2)
     aws-eventstream (1.1.1)
     aws-partitions (1.464.0)
     aws-record (2.6.0)
@@ -120,6 +121,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
+    brakeman (5.0.1)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.35.3)
@@ -131,18 +133,42 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    coderay (1.1.3)
     concurrent-ruby (1.1.8)
+    connection_pool (2.2.5)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     diff-lcs (1.4.4)
+    docile (1.4.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
+    e2mmap (0.1.0)
     erubi (1.10.0)
+    et-orbi (1.2.4)
+      tzinfo
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (2.18.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.1)
+    fugit (1.4.5)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashdiff (1.0.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
+    kwalify (0.7.2)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -162,10 +188,19 @@ GEM
     parallel (1.20.1)
     parallel_tests (3.7.0)
       parallel
+    parser (3.0.1.1)
+      ast (~> 2.4.1)
     pg (1.2.3)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
+    psych (3.3.2)
     public_suffix (4.0.6)
     puma (5.3.2)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-mini-profiler (2.3.2)
@@ -189,23 +224,50 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.3.2)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-env (1.0.8)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails-jquery-autocomplete (1.0.5)
+      rails (>= 3.2)
     railties (6.1.3.2)
       actionpack (= 6.1.3.2)
       activesupport (= 6.1.3.2)
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
+    rainbow (3.0.0)
     rake (13.0.3)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.2.5)
+    reek (6.0.4)
+      kwalify (~> 0.7.0)
+      parser (~> 3.0.0)
+      psych (~> 3.1)
+      rainbow (>= 2.0, < 4.0)
     regexp_parser (2.1.1)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
+    retryable (3.0.5)
     rexml (3.2.5)
+    rollbar (3.2.0)
+    ros-apartment (2.9.0)
+      activerecord (>= 5.0.0, < 6.2)
+      parallel (< 2.0)
+      public_suffix (>= 2.0.5, < 5.0)
+      rack (>= 1.3.6, < 3.0)
+    ros-apartment-sidekiq (1.2.0)
+      ros-apartment (>= 1.0)
+      sidekiq (>= 2.11)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.1)
@@ -223,11 +285,68 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
+    rubocop (1.15.0)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.5.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.7.0)
+      parser (>= 3.0.1.1)
+    rubocop-performance (1.11.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.10.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
+    rubocop-rspec (2.3.0)
+      rubocop (~> 1.0)
+      rubocop-ast (>= 1.1.0)
+    ruby-progressbar (1.11.0)
     rubyzip (2.3.0)
+    rufus-scheduler (3.7.0)
+      fugit (~> 1.1, >= 1.1.6)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-scheduler (3.1.0)
+      e2mmap
+      redis (>= 3, < 5)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 3)
+      thwait
+      tilt (>= 1.4.0)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.3)
+    slack-notifier (2.4.0)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.2.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
+    slim_lint (0.21.1)
+      rubocop (>= 0.78.0)
+      slim (>= 3.0, < 5.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -236,12 +355,21 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    temple (0.8.2)
+    test-prof (1.0.5)
     thor (1.1.0)
+    thwait (0.2.0)
+      e2mmap
+    tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.0.0)
+    validates_cpf_cnpj (0.2.0)
+      activemodel (>= 3.0.0)
+    vcr (6.0.0)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -251,6 +379,10 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
+    webmock (3.13.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     webpacker (5.4.0)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
@@ -276,24 +408,54 @@ DEPENDENCIES
   aws-sdk-route53
   aws-sdk-s3
   bootsnap
+  brakeman
   byebug
   capybara
-  jbuilder (~> 2.7)
-  listen (~> 3.3)
+  dotenv-rails
+  factory_bot_rails
+  faker
+  jbuilder
+  listen
   parallel_tests
-  pg (~> 1.1)
-  puma (~> 5.0)
-  rack-mini-profiler (~> 2.0)
-  rails (~> 6.1.3, >= 6.1.3.1)
+  pg
+  pry-rails
+  puma
+  rack-mini-profiler
+  rails
+  rails-controller-testing
+  rails-env
+  rails-jquery-autocomplete
+  reek
+  responders
+  retryable
   rexml
+  rollbar
+  ros-apartment
+  ros-apartment-sidekiq
   rspec-rails (~> 5.0.0)
+  rubocop
+  rubocop-performance
+  rubocop-rails
+  rubocop-rspec
   selenium-webdriver
+  shoulda-matchers
+  sidekiq
+  sidekiq-scheduler
+  simple_form
+  simplecov
+  slack-notifier
+  slim-rails
+  slim_lint
   spring
-  turbolinks (~> 5)
+  test-prof
+  turbolinks
   tzinfo-data
-  web-console (>= 4.1.0)
+  validates_cpf_cnpj
+  vcr
+  web-console
   webdrivers
-  webpacker (~> 5.0)
+  webmock
+  webpacker
 
 BUNDLED WITH
    2.2.18

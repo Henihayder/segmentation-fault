@@ -90,6 +90,7 @@ jobs:
           SECRET_KEY_BASE: dummy
           SEGMENT_KEY: dummy
           RAILS_SERVE_STATIC_FILES: true
+          APARTMENT_DISABLE_INIT: true
         run: bin/rails assets:precompile --trace
 
       - name: Run tests
