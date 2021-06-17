@@ -103,13 +103,13 @@ jobs:
 
       - name: Upload coverage result
         if: failure()
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: coverage
           path: coverage/
 
       - name: Upload Rails logs
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         if: failure()
         with:
           name: logs
@@ -117,7 +117,7 @@ jobs:
 
       - name: Upload capybara artifacts
         if: failure()
-        uses: actions/upload-artifact@v2.2.3
+        uses: actions/upload-artifact@v2.2.4
         with:
           name: capybara
           path: |
